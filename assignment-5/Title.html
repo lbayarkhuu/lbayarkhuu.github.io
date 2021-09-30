@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!-- saved from url=(0152)https://sakai.cs.miu.edu/access/content/attachment/939cc360-0b01-4348-9703-9cae2435e243/Assignments/eef4c953-6d39-4aad-b303-0ce79d5cfcf4/JsIntroLab.html -->
+<html lang="en"><script type="module" src="chrome-extension://jdkknkkbebbapilgoeccciglkfbmbnfm/hook.js"></script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Title</title>
+    <script>
+
+/* runs test to see if expected argument is === to value returned by function2test argument */
+function myFunctionTest(expected, found) {
+  if (expected === found) {
+    return "TEST SUCCEEDED";
+  } else {
+    return "TEST FAILED.  Expected " + expected + " found " + found;
+  }
+}
+
+/* max returns the maximum of 2 arguments */
+function max(a, b) {
+  if (a > b) {
+    return a;
+  } else {
+    return b;
+  };
+}
+console.log("Expected output of max(20,10) is 20  " + myFunctionTest(20, max(20, 10)));
+
+/* max3 takes 3 numbers as arguments and returns the largest */
+function maxOfThree(a, b, c) {
+  return max(max(a, b), c);
+
+}
+
+console.log("Expected output of maxOfThree(5,4,44) is 44  " + myFunctionTest(44, maxOfThree(5, 4, 44)));
+console.log("Expected output of maxOfThree(55,4,44) is 55  " + myFunctionTest(55, maxOfThree(55, 4, 44)));
+
+console.log("Expected output of maxOfThree(55,4,44) is 55  " + myFunctionTest(55, maxOfThree(55, 4, 44)));
+
+function isVowel(c) {
+  if (
+    c == "a" ||
+    c == "e" ||
+    c == "i" ||
+    c == "o" ||
+    c == "u"
+  ) return true;
+
+  return false;
+}
+
+console.log("Expected output of isVowel('a') is true  " + myFunctionTest(true, isVowel("a")));
+console.log("Expected output of isVowel('b') is false " + myFunctionTest(false, isVowel("b")));
+console.log("Expected output of isVowel('d') is false " + myFunctionTest(false, isVowel("d")));
+
+function sum(c) {
+  return c.reduce((a, b) => a + b, 0);
+}
+
+console.log("Expected output of sum([1, 2, 3]) is 6  " + myFunctionTest(6, sum([1, 2, 3])));
+console.log("Expected output of sum([1, 2, 4]) is 7 " + myFunctionTest(7, sum([1, 2, 4])));
+console.log("Expected output of sum([1, 2, 5]) is 8 " + myFunctionTest(8, sum([1, 2, 5])));
+
+function multiplies(c) {
+  return c.reduce((a, b) => a * b, 1);
+}
+
+console.log("Expected output of multiplies([1, 2, 3]) is 6  " + myFunctionTest(6, multiplies([1, 2, 3])));
+console.log("Expected output of multiplies([1, 2, 4]) is 8 " + myFunctionTest(8, multiplies([1, 2, 4])));
+console.log("Expected output of multiplies([1, 2, 5]) is 10 " + myFunctionTest(10, multiplies([1, 2, 5])));
+
+function reverse(c) {
+  return c.split("").reverse().join("");
+}
+
+console.log("Expected output of reverse('hello') is olleh  " + myFunctionTest("olleh", reverse("hello")));
+console.log("Expected output of reverse('dcba') is abcd " + myFunctionTest("abcd", reverse("dcba")));
+
+function findLongestWord(c) {
+  return c.sort((t1, t2) => t2.length - t1.length)[0];
+}
+
+console.log("Expected output of findLongestWord(['ab', 'hello']) is hello  " + myFunctionTest("hello", findLongestWord(["ab", "hello"])));
+console.log("Expected output of findLongestWord(['abcd', 'ba']) is abcd " + myFunctionTest("abcd", findLongestWord(["abcd", "ba"])));
+
+function filterLongWords(words, i) {
+  return words.filter(word => word.length > i);
+}
+
+console.log("Expected output of filterLongWords(['ab', 'hello'], 2) is hello  " + myFunctionTest("hello", filterLongWords(["ab", "hello"], 2).join(",")));
+console.log("Expected output of filterLongWords(['abcd', 'ba'], 1) is abcd " + myFunctionTest("abcd", filterLongWords(["abcd", "ba"], 2).join(",")));
+
+function A(a, i) {
+  return a.map(a => a * 10);
+}
+
+console.log("Expected output of A([4, 5]) is [40,50] " + myFunctionTest("40,50", A([4, 5]).join(",")));
+console.log("Expected output of A([2, 3]) is [40,50] " + myFunctionTest("20,30", A([2, 3]).join(",")));
+
+function B(a, i) {
+  return a.filter(a => a == 3);
+}
+
+console.log("Expected output of B([3]) is [3] " + myFunctionTest("3", B([3]).join(",")));
+console.log("Expected output of B([2,3]) is [3] " + myFunctionTest("3", B([2, 3]).join(",")));
+console.log("Expected output of B([3,3,3]) is [3,3,3] " + myFunctionTest("3,3,3", B([3, 3, 3, 4]).join(",")));
+
+function C(c) {
+  return c.reduce((a, b) => a * b, 1);
+}
+
+console.log("Expected output of C([1, 2, 3]) is 6  " + myFunctionTest(6, C([1, 2, 3])));
+console.log("Expected output of C([1, 2, 4]) is 8 " + myFunctionTest(8, C([1, 2, 4])));
+console.log("Expected output of C([1, 2, 5]) is 10 " + myFunctionTest(10, C([1, 2, 5])));
+
+    </script>
+</head>
+<body data-new-gr-c-s-check-loaded="14.1031.0" data-gr-ext-installed=""><text>
+
+Look in the Chrome developer console to see the output. CTRL_SHIFT_J </text><br>
+Or on Firefox with CTRL_SHIFT_K
+
+
+</body><div id="vimeo-record-extension"></div><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
