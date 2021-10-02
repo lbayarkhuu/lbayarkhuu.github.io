@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!-- saved from url=(0147)https://sakai.cs.miu.edu/access/content/attachment/939cc360-0b01-4348-9703-9cae2435e243/Assignments/2d2b48bd-ed40-47a3-95b4-2fea1c9a995d/ascii.html -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCIImation</title>
+
+	<link rel="stylesheet" href="ascii.css" type="text/css">	
+	<script src="animations.js"></script>
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.1031.0" data-gr-ext-installed="" data-new-gr-c-s-loaded="14.1031.0">
+	<header>CSE 190 M ASCII Animation Viewer</header>
+	<div class="container">
+		<textarea id="text-area" spellcheck="false"></textarea>
+		<fieldset>
+			<legend>Play Controls:</legend>
+			<button id="start">Start</button>
+			<button disabled="disabled" id="stop">Stop</button>
+		</fieldset>
+
+		<fieldset>
+			<legend>Animation:</legend>
+			<select id="animation">
+				<option value="Blank">Blank</option>
+				<option value="Exercise" selected="selected">Exercise</option>
+				<option value="Juggler">Juggler</option>
+				<option value="Bike">Bike</option>
+				<option value="Dive">Dive</option>
+			</select>
+		</fieldset>
+		<fieldset>
+			<legend>Size:</legend>
+			<select id="fontsize">
+				<option value="12px">Tiny</option>
+				<option value="14px">Small</option>
+				<option value="16px" selected="selected">Medium</option>
+				<option value="20px">Large</option>
+				<option value="24px">Extra Large</option>
+				<option value="32px">XXL</option>
+			</select>
+		</fieldset>
+		<fieldset>
+			<legend>Speed:</legend>
+			<label><input id="turbo" type="checkbox">Turbo</label>
+		</fieldset>
+	</div>
+	<div id="validate">
+		<a href="https://validator.w3.org/nu/?doc=https://lbayarkhuu.github.io/assignment-6/index.html">
+			<img src="https://manalabs.org/img/w3c-html.png" alt="html validator">
+		</a><br>
+		<a href="http://jigsaw.w3.org/css-validator/validator?uri=https://lbayarkhuu.github.io/assignment-6/index.html">
+			<img src="https://jigsaw.w3.org/css-validator/images/vcss" alt="Valid CSS!"></a><br>
+
+		<a href="http://mumstudents.org/jshint/check.php?uri=https://lbayarkhuu.github.io/assignment-6/index.html">
+			<img src="jscheck-small.png" alt="JavaScript Lint">
+		</a>
+	</div>
+
+	<script>
+		window.onload = function () {
+			"use strict";
+			
+			let splitter = "=====\n";
+			let options = [
+				"Blank",
+				"Custom", 
+				"Exercise",
+				"Juggler",
+				"Bike",
+				"Dive",
+			]
+			let active = "Blank";
+			let speed = 300;
+			let slides;
+			
+			let animations = ANIMATIONS['Exercise'].split(splitter);
+			let current = 0;
+			let timer;
+	
+			function startAnimation() {
+				timer = setInterval(play, speed);
+	
+				document.getElementById("start").disabled = true;
+				   document.getElementById("stop").disabled = false;
+			}
+	
+			function stopAnimation() {
+				clearInterval(timer);
+	
+				document.getElementById("start").disabled = false;
+				   document.getElementById("stop").disabled = true;
+			}
+	
+			function selectAnimation() {
+				const selected = document.getElementById("animation").value
+	
+				slides = ANIMATIONS[selected.toLowerCase()].split(splitter);
+				current = 0;
+			}
+	
+			function play() {
+				current = (current + 1) % slides.length;
+				console.log(slides)
+				console.log(current)
+				document.getElementById("text-area").innerHTML = slides[current];
+			}
+	
+			function changeFontSize() {
+				document.getElementById("text-area").style.fontSize = document.getElementById("fontsize").value
+			}
+	
+			function changeSpeed() {
+				if (document.getElementById("turbo").value == true) {
+					speed = 700;
+				} else {
+					speed = 300;
+				}
+	
+				stopAnimation();
+				startAnimation();
+			}
+	
+			document.getElementById("start").onclick = startAnimation;
+			document.getElementById("stop").onclick = stopAnimation;
+			document.getElementById("animation").onchange = selectAnimation;
+			document.getElementById("fontsize").onchange = changeFontSize;
+			document.getElementById("turbo").onchange = changeSpeed;
+	
+			selectAnimation();
+		}
+		
+	</script>
+</body>
+
+</html>

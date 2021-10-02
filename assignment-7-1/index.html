@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>W2D1 Quiz</title>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.2.0/mocha.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.2.0/mocha.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.js"></script>
+
+    <script>
+        // initialize mocha
+        mocha.setup('bdd');
+        // chai has a lot of stuff, let's make assert global
+        let assert = chai.assert;
+    </script>
+
+    <script>
+        const sum = (arr) => {
+            return arr.reduce((a, b) => a + b, 0);
+        }
+
+        const multiply = (arr) => {
+            return arr.reduce((a, b) => a * b, 1);
+        }
+
+        const reverse = (c) => {
+            return c.split("").reverse().join("");
+        }
+
+        const filterLongWords = (arr, i) => {
+            return arr.filter(word => word.length > i)
+        }
+    </script>
+
+    <script>
+        describe("sum", function () {
+            it("4-a Define a function sum() sums all the numbers in an array of numbers",
+                function () {
+                    assert.equal(6, sum([1, 2, 3]));
+                });
+        });
+
+        describe("multiply", function () {
+            it("4-b Define a function multiply() multiply all the numbers in an array of numbers",
+                function () {
+                    assert.equal(8, multiply([1, 2, 4]));
+                });
+        });
+
+        describe("reverse", function () {
+            it("5 Define a function reverse() that computes the reversal of a string.",
+                function () {
+                    assert.equal("abcdef", reverse("fedcba"));
+                });
+        });
+
+        describe("filterLongWords", function () {
+            it("7 Write a function filterLongWords() that takes an array of words and an integer i and returns the array of words that are longer than i. */",
+                function () {
+                    assert.deepEqual(["three", "four", "five"], filterLongWords(["one", "two", "three", "four", "five"], 3));
+                });
+        });
+    </script>
+</head>
+<body>
+    <div id="mocha"></div>
+    <script>
+        mocha.run();
+
+    </script>
+</body>
+</html>
