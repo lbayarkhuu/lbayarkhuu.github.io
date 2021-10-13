@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<head lang="en">
+    <meta charset="UTF-8" />
+    <title>W3D2</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div id="container"></div>
+    <div class="form-container form-group">
+        <label for="width"> Width</label>
+        <input type="number" name="width" id="width" min="0" step="1" value="50" />
+        <label for="amount"> Growth amount </label>
+        <input type="number" name="amount" id="amount" min="0" step="1" value="10" />
+        <label for="grate"> Growth rate</label>
+        <input type="number" name="rate" id="rate" min="0" step="100" value="250" />
+        <label for="circles"> Number of Circles</label>
+        <input type="number" name="circles" id="circles" min="0" step="1" value="10" />
+        <div class="button-container">
+            <button id="start" type="button">
+                Start
+            </button>
+        </div>
+    </div>
+</body>
